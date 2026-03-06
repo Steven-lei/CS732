@@ -2,6 +2,7 @@
   "name": "simple",
   "main": "app.js",
   "dependencies": {
+    "express": "^5.2.1",
     "moment": "^2.30.1"
   }
 }
