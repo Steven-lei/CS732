@@ -1,5 +1,5 @@
 app = "cs732-groupproj"
-primary_region = "akl"
+primary_region = "syd"
 [http_service]
   internal_port = 3000 # 必须和 Dockerfile 的 EXPOSE 一致
   force_https = false
