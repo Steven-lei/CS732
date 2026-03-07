@@ -1,11 +1,23 @@
-on: push
+name: Fly Deploy
+on:
+  push:
+    branches: [master] # only on master branch
 jobs:
-  build-node:
+  deploy:
     runs-on: ubuntu-latest
-    container: node:14
     steps:
-      - run: node --version
-      - run: npm --version
-      - uses: actions/checkout@v3
-      - run: npm install
-      - run: node app.js
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # 1. 安装 Fly.io 的命令行工具
+      - name: Setup Flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@master
+
+      # 2. 执行部署 (它会自动寻找项目中的 Dockerfile)
+      - name: Deploy to Fly.io
+        run: flyctl deploy --remote-only
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}

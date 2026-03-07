@@ -1,0 +1,7 @@
+app = "cs732-groupproj"
+primary_region = "akl"
+[http_service]
+  internal_port = 3000 # 必须和 Dockerfile 的 EXPOSE 一致
+  force_https = false
+  auto_stop_machines = true # 没人访问时关机，省钱
+  auto_start_machines = true
