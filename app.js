@@ -5,7 +5,7 @@ var monent = require("moment");
 
 app.get("/", function (req, res) {
   var date = monent().format("YYYY-MM-DD, h:mm:ss a");
-  res.send("CICD has completed-V2. Today is " + date);
+  res.send("CICD has completed-V3. Today is " + date);
 });
 
 app.listen(3000, function () {
