@@ -1,14 +1,3 @@
-
-FROM node:22-alpine AS base
-WORKDIR /app
-COPY package*.json ./
-RUN npm installb --production
-COPY . .
-
-EXPOSE 3000
-
-# 启动命令
-CMD ["node", "app.js"]# 使用 Node 22 轻量版
 FROM node:22-alpine
 
 # 设置工作目录
