@@ -1,5 +1,5 @@
 import express from "express";
-
+import { authMiddleware } from "../../midware/auth.js";
 const router = express.Router();
 
 const dishes = [
@@ -75,8 +75,8 @@ const dishes = [
     ],
   },
 ];
-router.get("/", (req, res) => res.json(dishes));
-router.get("/:id", (req, res) => {
+router.get("/", authMiddleware, (req, res) => res.json(dishes));
+router.get("/:id", authMiddleware, (req, res) => {
   const { id } = req.params;
 
   let foundDish = null;
